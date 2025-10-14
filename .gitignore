@@ -1,0 +1,35 @@
+# Build e dependências
+/build/
+!/gradle/wrapper/gradle-wrapper.jar
+.gradle/
+target/
+out/
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Logs
+*.log
+logs/
+spring.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Configuração de ambiente
+*.env
+
+# Arquivos temporários
+*.tmp
+*.swp
+
+# Banco de dados local (se existir)
+*.db
+
+# Teste e relatórios
+/test-output/

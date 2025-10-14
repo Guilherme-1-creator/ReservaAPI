@@ -1,0 +1,3 @@
+# Forçar detecção como Java
+*.java linguist-detectable=true
+*.* linguist-language=Java
