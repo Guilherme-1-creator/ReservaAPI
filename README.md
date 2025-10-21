@@ -10,6 +10,7 @@ O sistema permite **criar, listar, atualizar e remover** salas, usuários e rese
 - ☕ **Java 17**
 - 🌱 **Spring Boot 3**
 - 🗃️ **Spring Data JPA**
+- 🔒 **Spring Security**
 - 🔁 **Hibernate**
 - 🐬 **MySQL**
 - ⚙️ **Gradle**
