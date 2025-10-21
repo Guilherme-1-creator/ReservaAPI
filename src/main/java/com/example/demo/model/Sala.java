@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import com.example.demo.dto.CadastroSalaDto;
+import com.example.demo.dto.CadastroSalaDTO;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -25,7 +25,7 @@ public class Sala {
         this.ativa = ativa;
     }
 
-    public Sala(CadastroSalaDto dto) {
+    public Sala(CadastroSalaDTO dto) {
         this.codigo = dto.codigo();
         this.capacidade = dto.capacidade();
         this.ativa = dto.ativa();

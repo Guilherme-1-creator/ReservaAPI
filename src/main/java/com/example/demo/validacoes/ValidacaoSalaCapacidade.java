@@ -1,6 +1,6 @@
 package com.example.demo.validacoes;
 
-import com.example.demo.dto.CriarReservaDto;
+import com.example.demo.dto.CriarReservaDTO;
 import com.example.demo.exception.ValidacaoException;
 import com.example.demo.model.Sala;
 
@@ -15,7 +15,7 @@ public class ValidacaoSalaCapacidade implements ValidacaoCriacaoReserva {
     private SalaRepository repository;
 
     @Override
-    public void validar(CriarReservaDto dto) {
+    public void validar(CriarReservaDTO dto) {
         Sala sala = repository.findById(dto.salaId()).orElseThrow(() -> new ValidacaoException("Sala não encontrada"));
         if (sala.getCapacidade() <= 0) {
             throw new ValidacaoException("A capacidade da sala deve ser maior que 0");

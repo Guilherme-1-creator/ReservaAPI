@@ -1,6 +1,6 @@
 package com.example.demo.validacoes;
 
-import com.example.demo.dto.CriarReservaDto;
+import com.example.demo.dto.CriarReservaDTO;
 import com.example.demo.exception.ValidacaoException;
 import com.example.demo.model.Sala;
 import com.example.demo.repository.SalaRepository;
@@ -14,7 +14,7 @@ public class ValidacaoSalaInativa implements ValidacaoCriacaoReserva{
     private SalaRepository salaRepository;
 
     @Override
-    public void validar(CriarReservaDto dto) {
+    public void validar(CriarReservaDTO dto) {
         Sala sala = salaRepository.findById(dto.salaId()).orElseThrow(() -> new ValidacaoException("Sala não encontrada"));
         if (!sala.isAtiva()) {
             throw new ValidacaoException("Não é possivel reservar uma sala inativa");

@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.exception.ValidacaoException;
-import com.example.demo.dto.CadastroUsuarioDto;
-import com.example.demo.dto.UsuarioDto;
+import com.example.demo.dto.CadastroUsuarioDTO;
+import com.example.demo.dto.UsuarioDTO;
 import com.example.demo.model.Usuario;
 import com.example.demo.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +17,22 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
 
-    public List<UsuarioDto> listar() {
+    public List<UsuarioDTO> listar() {
         return repository.findAll()
                 .stream()
-                .map(UsuarioDto::new)
+                .map(UsuarioDTO::new)
                 .toList();
     }
 
-    public UsuarioDto listarPorId(Long id) {
+    public UsuarioDTO listarPorId(Long id) {
         Usuario usuario = repository.findById(id).orElseThrow(() -> new ValidacaoException("Usuário não encontrado"));
-        return new UsuarioDto(usuario);
+        return new UsuarioDTO(usuario);
     }
 
     @Transactional
-    public void criarUsuario(CadastroUsuarioDto dto) {
+    public void criarUsuario(CadastroUsuarioDTO dto) {
         boolean jaCadastrado = repository.existsByNomeOrEmailOrTelefone(dto.nome(), dto.email(), dto.telefone());
-        System.out.println("Verificação duplicado: " + jaCadastrado);
+
         if (jaCadastrado) {
             throw new ValidacaoException("Dados de usúario já cadastrados");
         }

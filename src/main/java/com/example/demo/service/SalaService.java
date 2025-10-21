@@ -1,14 +1,13 @@
 package com.example.demo.service;
 
 import com.example.demo.exception.ValidacaoException;
-import com.example.demo.dto.CadastroSalaDto;
-import com.example.demo.dto.SalaDto;
+import com.example.demo.dto.CadastroSalaDTO;
+import com.example.demo.dto.SalaDTO;
 import com.example.demo.model.Sala;
 import com.example.demo.repository.SalaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -19,20 +18,20 @@ public class SalaService {
     @Autowired
     private SalaRepository repository;
 
-    public List<SalaDto> listar() {
+    public List<SalaDTO> listar() {
         return repository.findAll()
                 .stream()
-                .map(SalaDto::new)
+                .map(SalaDTO::new)
                 .toList();
     }
 
-    public SalaDto listarPorId(Long id) {
+    public SalaDTO listarPorId(Long id) {
         Sala sala =  repository.findById(id).orElseThrow(()-> new ValidacaoException("Sala não encontrada"));
-        return new SalaDto(sala);
+        return new SalaDTO(sala);
     }
 
     @Transactional
-    public void criarSala(CadastroSalaDto dto) {
+    public void criarSala(CadastroSalaDTO dto) {
         boolean jaCadastrado = repository.existsByCodigo(dto.codigo());
 
         if (jaCadastrado) {

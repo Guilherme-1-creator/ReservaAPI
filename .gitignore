@@ -1,35 +1,55 @@
-# Build e dependências
+# =====================================
+# 🏗️ Build e dependências
+# =====================================
 /build/
-!/gradle/wrapper/gradle-wrapper.jar
-.gradle/
-target/
-out/
+/out/
+/target/
+/.gradle/
 
-# IDEs
+# Gradle Wrapper (manter apenas o necessário)
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# =====================================
+# 💻 IDE (IntelliJ IDEA)
+# =====================================
 .idea/
 *.iml
 *.ipr
 *.iws
-.vscode/
 
-# Logs
+# =====================================
+# 🧩 Logs e temporários
+# =====================================
 *.log
 logs/
 spring.log
+*.tmp
+*.swp
+*.lock
 
-# Sistema
+# =====================================
+# ⚙️ Sistema e cache
+# =====================================
 .DS_Store
 Thumbs.db
 
-# Configuração de ambiente
+# =====================================
+# 🔐 Configurações de ambiente
+# =====================================
 *.env
+application-*.yml
+application-*.properties
+!src/main/resources/application.properties
 
-# Arquivos temporários
-*.tmp
-*.swp
-
-# Banco de dados local (se existir)
+# =====================================
+# 💾 Banco de dados local
+# =====================================
 *.db
+*.mv.db
+*.h2.db
 
-# Teste e relatórios
+# =====================================
+# 🧪 Testes e relatórios
+# =====================================
 /test-output/

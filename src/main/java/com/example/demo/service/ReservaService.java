@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.CriarReservaDto;
-import com.example.demo.dto.ReservaDto;
+import com.example.demo.dto.CriarReservaDTO;
+import com.example.demo.dto.ReservaDTO;
 import com.example.demo.exception.ValidacaoException;
 import com.example.demo.model.Reserva;
 import com.example.demo.model.Sala;
@@ -33,21 +33,21 @@ public class ReservaService {
     private List<ValidacaoCriacaoReserva> validacoes;
 
 
-    public List<ReservaDto> listar() {
+    public List<ReservaDTO> listar() {
         return repository.findAll()
                 .stream()
-                .map(ReservaDto::new).
+                .map(ReservaDTO::new).
                 toList();
     }
 
-    public ReservaDto listarPorId(Long id) {
+    public ReservaDTO listarPorId(Long id) {
         Reserva reserva = repository.findById(id).orElseThrow(() -> new ValidacaoException("Reserva não encontrada"));
-        return new ReservaDto(reserva);
+        return new ReservaDTO(reserva);
     }
 
 
     @Transactional
-    public void criarReserva(CriarReservaDto dto) {
+    public void criarReserva(CriarReservaDTO dto) {
 
         Usuario usuario = usuarioRepository.findById(dto.usuarioId()).orElseThrow(() -> new ValidacaoException("Usuário não encontrado"));
         Sala sala = salaRepository.findById(dto.salaId()).orElseThrow(() -> new ValidacaoException("Sala não encontrada"));

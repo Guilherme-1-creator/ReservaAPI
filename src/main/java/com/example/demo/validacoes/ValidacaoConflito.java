@@ -1,6 +1,6 @@
 package com.example.demo.validacoes;
 
-import com.example.demo.dto.CriarReservaDto;
+import com.example.demo.dto.CriarReservaDTO;
 import com.example.demo.exception.ValidacaoException;
 import com.example.demo.model.Reserva;
 import com.example.demo.model.enums.StatusReserva;
@@ -17,7 +17,7 @@ public class ValidacaoConflito implements ValidacaoCriacaoReserva {
     private ReservaRepository repository;
 
     @Override
-    public void validar(CriarReservaDto dto) {
+    public void validar(CriarReservaDTO dto) {
         List<Reserva> reservasExistentes = repository.findAll();
         for (Reserva existente : reservasExistentes) {
 

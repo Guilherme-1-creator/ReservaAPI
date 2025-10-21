@@ -1,8 +1,8 @@
 package com.example.demo.validacoes;
 
-import com.example.demo.dto.CriarReservaDto;
+import com.example.demo.dto.CriarReservaDTO;
 
 public interface ValidacaoCriacaoReserva {
 
-    void validar(CriarReservaDto dto);
+    void validar(CriarReservaDTO dto);
 }

@@ -1,9 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CadastroSalaDto;
-import com.example.demo.dto.SalaDto;
+import com.example.demo.dto.CadastroSalaDTO;
+import com.example.demo.dto.SalaDTO;
 import com.example.demo.exception.ValidacaoException;
 import com.example.demo.service.SalaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,19 +19,19 @@ public class SalaController {
     private SalaService service;
 
     @GetMapping
-    public ResponseEntity<List<SalaDto>> listar() {
-        List<SalaDto> salas = service.listar();
+    public ResponseEntity<List<SalaDTO>> listar() {
+        List<SalaDTO> salas = service.listar();
         return ResponseEntity.ok().body(salas);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SalaDto> listarPorId(@PathVariable Long id) {
-        SalaDto sala = service.listarPorId(id);
+    public ResponseEntity<SalaDTO> listarPorId(@PathVariable Long id) {
+        SalaDTO sala = service.listarPorId(id);
         return ResponseEntity.ok().body(sala);
     }
 
     @PostMapping
-    public ResponseEntity<String> cadastrar(@RequestBody CadastroSalaDto dto) {
+    public ResponseEntity<String> cadastrar(@RequestBody @Valid CadastroSalaDTO dto) {
         try {
             service.criarSala(dto);
             return ResponseEntity.ok("Sala criada!");

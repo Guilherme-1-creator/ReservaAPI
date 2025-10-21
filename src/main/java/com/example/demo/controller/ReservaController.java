@@ -1,9 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CriarReservaDto;
-import com.example.demo.dto.ReservaDto;
+import com.example.demo.dto.CriarReservaDTO;
+import com.example.demo.dto.ReservaDTO;
 import com.example.demo.exception.ValidacaoException;
 import com.example.demo.service.ReservaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,21 +19,20 @@ public class ReservaController {
     private ReservaService service;
 
     @GetMapping
-    public ResponseEntity<List<ReservaDto>> listar() {
-        List<ReservaDto> reservas = service.listar();
-        System.out.println("Reservas encontradas: " + reservas.size());
+    public ResponseEntity<List<ReservaDTO>> listar() {
+        List<ReservaDTO> reservas = service.listar();
         return ResponseEntity.ok().body(reservas);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ReservaDto> listarPorId(@PathVariable Long id) {
-        ReservaDto dto = service.listarPorId(id);
+    public ResponseEntity<ReservaDTO> listarPorId(@PathVariable Long id) {
+        ReservaDTO dto = service.listarPorId(id);
         return ResponseEntity.ok().body(dto);
 
     }
 
     @PostMapping
-    public ResponseEntity<String> criarReserva(@RequestBody CriarReservaDto dto) {
+    public ResponseEntity<String> criarReserva(@RequestBody @Valid CriarReservaDTO dto) {
         try {
             service.criarReserva(dto);
             return ResponseEntity.ok().body("Reserva realizada!");
