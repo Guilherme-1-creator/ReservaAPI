@@ -48,7 +48,6 @@ public class ReservaService {
 
     @Transactional
     public void criarReserva(CriarReservaDTO dto) {
-
         Usuario usuario = usuarioRepository.findById(dto.usuarioId()).orElseThrow(() -> new ValidacaoException("Usuário não encontrado"));
         Sala sala = salaRepository.findById(dto.salaId()).orElseThrow(() -> new ValidacaoException("Sala não encontrada"));
 

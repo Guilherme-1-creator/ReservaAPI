@@ -5,6 +5,7 @@ import com.example.demo.dto.CadastroUsuarioDTO;
 import com.example.demo.dto.UsuarioDTO;
 import com.example.demo.exception.ValidacaoException;
 import com.example.demo.service.UsuarioService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +21,14 @@ public class UsuarioController {
     private UsuarioService service;
 
     @GetMapping
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<UsuarioDTO>> listar(){
         List<UsuarioDTO> usuarios = service.listar();
         return ResponseEntity.ok(usuarios);
     }
 
     @GetMapping("/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<UsuarioDTO> listarPorId(@PathVariable Long id){
         UsuarioDTO usuario = service.listarPorId(id);
         return ResponseEntity.ok(usuario);
@@ -42,6 +45,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<String> deletar(@PathVariable Long id){
         try {
             service.remover(id);

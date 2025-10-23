@@ -4,6 +4,7 @@ import com.example.demo.dto.CadastroSalaDTO;
 import com.example.demo.dto.SalaDTO;
 import com.example.demo.exception.ValidacaoException;
 import com.example.demo.service.SalaService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/salas")
+@SecurityRequirement(name = "bearer-key")
 public class SalaController {
 
     @Autowired

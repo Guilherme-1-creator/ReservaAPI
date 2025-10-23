@@ -40,6 +40,7 @@ public class UsuarioService {
         repository.save(new Usuario(dto));
     }
 
+    @Transactional
     public void remover(Long id) {
         Usuario usuario = repository.findById(id).orElseThrow(() -> new ValidacaoException("Usuário não encontrado"));
         repository.delete(usuario);

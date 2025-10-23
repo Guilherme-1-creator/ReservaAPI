@@ -4,6 +4,7 @@ import com.example.demo.dto.CriarReservaDTO;
 import com.example.demo.dto.ReservaDTO;
 import com.example.demo.exception.ValidacaoException;
 import com.example.demo.service.ReservaService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/reservas")
+@SecurityRequirement(name = "bearer-key")
 public class ReservaController {
 
     @Autowired
